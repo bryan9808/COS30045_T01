@@ -1,0 +1,212 @@
+:root {
+  --bg: #0d1117;
+  --bg-soft: #131a23;
+  --surface: #171f2b;
+  --surface-2: #1d2735;
+  --border: #2a3646;
+  --text: #e8edf4;
+  --text-dim: #9aa7b8;
+  --accent: #f5b942;        /* electric amber, echoes the lightning logo */
+  --accent-soft: rgba(245, 185, 66, 0.14);
+  --accent-2: #38bdf8;      /* cool cyan for data accents */
+  --radius: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ---------- Top navigation ---------- */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px clamp(16px, 12vw, 220px);
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--accent);
+}
+
+.topnav .logo { margin-right: 14px; line-height: 0; }
+.topnav .logo img {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.topnav .logo:hover img {
+  transform: rotate(-12deg) scale(1.08);
+  box-shadow: 0 0 14px rgba(245, 185, 66, 0.6);
+}
+
+.topnav a.navlink {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 10px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+/* mouse-over feedback */
+.topnav a.navlink:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* feedback about current page */
+.topnav a.navlink.active {
+  color: #131a23;
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(245, 185, 66, 0.35);
+}
+
+/* ---------- Layout ---------- */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.page h1 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+.page h1 span { color: var(--accent); }
+
+.page h2 { margin: 38px 0 14px; font-size: 1.35rem; }
+.page h3 { margin: 26px 0 10px; font-size: 1.1rem; color: var(--accent-2); }
+
+.lede { color: var(--text-dim); max-width: 150ch; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: linear-gradient(160deg, var(--surface), var(--bg-soft));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  margin: 24px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card ul { margin: 10px 0 0 22px; }
+.card li { margin: 8px 0; }
+.card li::marker { color: var(--accent); }
+
+.card h2 { margin-top: 0; }
+
+/* ---------- Stat tiles (home page) ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin: 28px 0 8px;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.stat:hover { transform: translateY(-4px); border-color: var(--accent); }
+.stat .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+.stat .lbl { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; }
+
+
+/* ---------- Key questions list ---------- */
+.qlist { margin: 6px 0 0 20px; }
+.qlist li { margin: 10px 0; padding-left: 6px; }
+.qlist li::marker { color: var(--accent); font-weight: 800; }
+
+/* ---------- Chart and Answer Container ---------- */
+.chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 28px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.chart-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 18px auto;
+    padding: 12px;
+    background-color: #ffffff; /* Keeps chart visuals crisp */
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.chart-holder img.chart-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Descriptive answer box matching your theme */
+.chart-answer {
+    background: var(--bg-soft);
+    border-left: 3px solid var(--accent-2);
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.chart-answer strong {
+    color: var(--accent);
+}
+
+/* Styling to ensure the inserted image scales cleanly */
+.chart-holder img.chart-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.chart-card h2 {
+    margin-top: 0;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 3px solid var(--accent);
+  background: var(--bg-soft);
+  padding: 18px clamp(16px, 12vw, 220px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .topnav { padding: 10px 16px; }
+  .topnav a.navlink { padding: 8px 12px; font-size: 0.85rem; }
+}

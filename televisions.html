@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Televisions | Appliance Energy Use in Australia</title>
+  <link rel="icon" href="images/PowerIcon.png" type="image/png">
+  <link rel="stylesheet" href="css/styles.css">
+<base target="_blank">
+</head>
+<body>
+  <nav class="topnav">
+    <a class="logo" href="index.html" title="Home"><img src="images/PowerIcon.png" alt="Power logo"></a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="televisions.html">Televisions</a>
+    <a class="navlink" href="about.html">About Us</a>
+  </nav>
+
+  <main>
+    <div class="page">
+      <h1>Television <span>Energy</span> Tips</h1>
+
+      <section class="card">
+        <p><strong>Size and technology matter.</strong> Larger screens draw more power,
+          and older technologies such as plasma (phased out of the Australian market
+          around 2016) used far more electricity than modern sets. Today's LED/LCD and
+          OLED televisions are dramatically more efficient for their screen size.</p>
+        <ul>
+          <li>Use the TV's <em>Energy Saver</em> or <em>Eco</em> picture mode, and lower
+            the brightness to a comfortable level &mdash; showroom brightness is not
+            living-room brightness.</li>
+          <li>Switch the TV off at the wall when not in use. Even in standby, a TV can
+            keep drawing a few watts, around the clock.</li>
+          <li>Disable &ldquo;always-listening&rdquo; voice-assistant features if you do
+            not use them; they add to standby consumption.</li>
+          <li>Compare the <strong>star rating</strong> and the
+            <strong>annual kWh</strong> figure on the Energy Rating Label before buying
+            &mdash; the kWh number is your estimated yearly electricity use.</li>
+          <li>As a rough guide, a modern 55&Prime; TV uses on the order of 100&ndash;150 W
+            while on; a 75&Prime; set can use 200 W or more.</li>
+        </ul>
+      </section>
+
+      <h2>TV Energy Insights: Data Story</h2>
+      <p class="lede">This section presents findings from the Australian
+        Government&rsquo;s Television Energy Rating dataset (GEMS registrations), helping
+        consumers make informed decisions about technology, size, brand and efficiency.
+        Seven key questions guide the analysis &mdash; each will be answered with an
+        interactive D3.js chart as the project progresses.</p>
+
+      <section class="card">
+        <h2>Key Questions</h2>
+        <ol class="qlist">
+          <li>What type of TV screen technologies are currently available in Australia
+            and which are the most frequent?</li>
+          <li>What screen sizes are available and which are most frequent?</li>
+          <li>Which brands have the largest number of models?</li>
+          <li>Which type of screen technology consumes the least amount of power?</li>
+          <li>What is the relationship between screen size and power use?</li>
+          <li>What is the relationship between star rating and screen size?</li>
+          <li>Are there differences in power consumption between brands?</li>
+        </ol>
+      </section>
+
+      <h3>Q1 &mdash; What TV technologies are most common?</h3>
+<div class="chart-card">
+    <h2>Pie Chart - Screen Tech</h2>
+    <div class="chart-holder">
+        <img src="images/q1.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> LCD (LED) represents the largest share of screen technology with 3,797 units, followed by standard LCD (484) and OLED (292).
+    </div>
+</div>
+
+      <h3>Q2 &mdash; What screen sizes are most common?</h3>
+<div class="chart-card">
+    <h2>Bar Chart - Screen Size Distribution</h2>
+    <div class="chart-holder">
+        <img src="images/q2.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> The most frequently occurring screen sizes in the dataset are 55.0 and 65.0 inches
+    </div>
+</div>
+
+      <h3>Q3 &mdash; Which brands have the largest number of models?</h3>
+<div class="chart-card">
+    <h2>Bar Chart - Brand Distribution</h2>
+    <div class="chart-holder">
+        <img src="images/q3.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> Kogan has the highest number of registered television models (809), closely followed by LG (723) and Samsung Electronics (699).
+    </div>
+</div>
+
+      <h3>Q4 &mdash; Which technology consumes the least power?</h3>
+<div class="chart-card">
+    <h2>Bar Chart - Median Power by Screen Tech</h2>
+    <div class="chart-holder">
+        <img src="images/q4.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> OLED displays have the highest median average mode power at 112.70, compared to LCD (LED) at 106 and standard LCD at 71.35.
+    </div>
+</div>
+
+      <h3>Q5 &mdash; Screen size vs. power use</h3>
+<div class="chart-card">
+    <h2>Scatter Plot - Screen Size vs. Power</h2>
+    <div class="chart-holder">
+        <img src="images/q5.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> There is a positive correlation between screen size in inches and average mode power consumption.
+    </div>
+</div>
+
+      <h3>Q6 &mdash; Star rating vs. screen size</h3>
+<div class="chart-card">
+    <h2>Scatter Plot - Screen Size vs. Star Rating</h2>
+    <div class="chart-holder">
+        <img src="images/q6.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> Star rating indices are distributed across various screen sizes, with the highest concentrations occurring around common consumer dimensions.
+    </div>
+</div>
+
+      <h3>Q7 &mdash; Power consumption differences between brands</h3>
+<div class="chart-card">
+    <h2>Box Plot - Power Distribution by Brand</h2>
+    <div class="chart-holder">
+        <img src="images/q7.png" alt="Pie Chart showing Screen Technology" class="chart-image">
+    </div>
+    <div class="chart-answer">
+        <strong>Answer:</strong> Power consumption variability differs significantly across brands, with some manufacturers showing wider interquartile ranges than others.
+    </div>
+</div>
+    </div>
+  </main>
+  <footer>
+    <span>&copy; <span data-year>2026</span> Bryan Ngu Qi Xian &mdash; COS30045 Data Visualisation</span>
+    <span>Built with assistance from GenAI for starter code and placeholder content</span>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
