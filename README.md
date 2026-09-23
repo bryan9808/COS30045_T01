@@ -2,9 +2,9 @@
 
 **Unit:** COS30045 Data Visualisation  
 **Task:** T01 (a): Build Appliance Energy Consumption Website  
-**Author:** Bryan Ngu Qi Xian  
-**Live Site:** [https://your-project-name.vercel.app/](https://your-project-name.vercel.app/)  
-**Repository:** [https://github.com/your-username/your-repo-name](https://github.com/your-username/your-repo-name)
+**Author:** Bryan Ngu Qi Xian 104391562
+**Live Site:** [https://cos-30045-t01.vercel.app/](https://cos-30045-t01.vercel.app/)  
+**Repository:** [https://github.com/bryan9808/COS30045_T01](https://github.com/bryan9808/COS30045_T01)  
 
 ---
 
