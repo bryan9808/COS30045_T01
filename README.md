@@ -10,16 +10,15 @@
 
 ## 1. Project Overview
 
-This project is an interactive single-page demonstration website focused on household appliance energy consumption in the Australian market. It establishes the base front-end layout and deployment workflow required for the data visualisations planned for later tasks in COS30045.
+This project is an interactive single-page demonstration website focused on household appliance energy consumption in the Australian market. It establishes the base front-end layout and deployment workflow required for upcoming data visualisations in COS30045.
 
 ### Core Features
 
 * **Three Functional Views:** Home, Televisions, and About Us.
-* **JavaScript Dynamic Navigation:** Seamlessly swaps views without full-page browser reloads, using hash-based routing (`history.pushState`) so back/forward buttons and page refreshes keep the user on the correct view.
-* **Brand-Consistent Dark Theme:** Deep charcoal/navy surfaces with amber and cyan accents derived from the lightning-bolt "power" logo, implemented entirely through CSS custom properties.
-* **Interactive Feedback:** Hover glow on navigation links, a spinning logo animation, lifting stat tiles, and a glowing amber pill indicator on the active tab.
-* **Data-Story Framework:** The Televisions view defines seven key analysis questions, each with a dedicated chart placeholder slot ready for interactive D3.js visualisations in later tasks.
-* **Continuous Deployment:** Version-controlled with GitHub Desktop (commits and pushes) and auto-deployed to Vercel on every push.
+* **JavaScript Dynamic Navigation:** Seamlessly swaps views without full-page browser reloads.
+* **Brand-Consistent Theme:** Dark charcoal styling with amber and cyan accents derived from the power logo.
+* **Interactive Feedback:** Hover glow on links, visual active tab indicator, and a power logo home link.
+* **Continuous Deployment:** Managed with GitHub Desktop and deployed via Vercel.
 
 ---
 
@@ -27,10 +26,10 @@ This project is an interactive single-page demonstration website focused on hous
 
 | File / Component | Prompt / Trigger Context | GenAI Contribution |
 | :--- | :--- | :--- |
-| `index.html` | Prompted for starter copy on appliance energy consumption in Australia (Energy Rating Labels, standby power, star ratings). | Generated the semantic HTML structure for all three views, placeholder content, and the seven key analysis questions with suggested chart types. |
-| `css/styles.css` | Dark colour theme request and navigation styling. | Suggested CSS variables (`:root`), the `.page-section` show/hide pattern, flexbox navbar layout, and hover/active transition effects. |
-| `js/script.js` | Tab switching without page reloads. | Drafted the SPA router: `e.preventDefault()` on nav clicks, `history.pushState` hash routing, `.active` class toggling, `popstate` handling, and the auto-updating footer year. |
-| `images/logo.svg` | Needed a "power" logo to anchor the theme. | Generated the lightning-bolt badge SVG, reused as both the navbar logo and the browser tab favicon. |
+| `index.html` | Prompted GenAI to draft placeholder copy on Australian appliance energy use (star ratings, standby power). | Generated semantic HTML structure, section containers, and the seven key analysis questions with suggested chart types. |
+| `styles.css` | Dark colour theme request and navigation styling. | Suggested CSS variables (`:root`), the `.page-section` show/hide pattern, and hover transition effects. |
+| `script.js` | Tab switching logic without reloading | Drafted the navigation code using `e.preventDefault()`, `classList.toggle` on the `.active` class, and hash-based routing. |
+| `images/logo.svg` | Needed a "power" logo to anchor the theme. | Generated the lightning-bolt badge SVG used for the navbar logo and favicon. |
 
 ---
 
@@ -38,31 +37,27 @@ This project is an interactive single-page demonstration website focused on hous
 
 ### Workflow & Productivity
 
-GenAI significantly accelerated the scaffolding phase. Repetitive structures — three views with consistent navbars and footers, the footer year updater, the card/chart-placeholder markup for seven questions — were drafted in seconds rather than written by hand. This left more time for the parts that mattered: verifying content accuracy and refining the visual design.
+Using GenAI significantly accelerated boilerplate scaffolding. Instead of writing repetitive DOM queries and CSS resets from scratch, prompts provided working syntax and structure almost instantaneously. It was particularly effective at standard patterns, such as toggling CSS classes across a NodeList.
 
 ### Challenges & Verification
 
-While GenAI produced functional starter code, every suggestion required human review before it was committed:
+While GenAI produced functional starter code, it required human review to ensure it aligned with the assignment brief:
 
-* **Requirement Alignment:** Early drafts used traditional multi-page links (`<a href="televisions.html">`). The architecture had to be explicitly reworked into a Single-Page Application (SPA) using section show/hide, both to satisfy the "swap pages using JavaScript" requirement and to avoid full page reloads.
-* **Content Accuracy:** Generated claims about energy consumption (e.g. standby power figures, TV wattages) were checked against the Australian Government's Energy Rating program descriptions and marked as placeholder where the real GEMS registration data still needs to be analysed.
-* **Visual Accuracy:** Initial colour suggestions were generic dark-theme defaults. The palette was manually refined to the amber/cyan accent scheme that echoes the power logo, and spacing bugs (such as excess margin on headings inside cards) were diagnosed and fixed by hand.
+* **Requirement Alignment:** Initial suggestions used traditional multi-page links (`<a href="about.html">`). I had to explicitly adjust the architecture to Single-Page Application (SPA) DOM manipulation as required by the task.
+
+* **Visual Accuracy:** Colour palette and spacing suggestions were generic defaults. I manually refined the hex values and fixed layout issues (such as excess heading margins inside cards) to match my intended dark theme.
 
 ### Conclusion
 
-GenAI acts as an efficient drafting partner for boilerplate HTML, CSS patterns, and JavaScript syntax. However, understanding the underlying DOM manipulation, CSS specificity, and box model remains essential — the model can produce code that *works*, but only a human can confirm it meets the brief, looks right, and can be defended during a demonstration.
+GenAI acts as an efficient coding partner for syntax autocomplete and structural drafting. However, understanding the core DOM manipulation mechanics remains essential to debug layout quirks and defend design decisions during demonstrations.
 
 ---
 
 ## 4. Code Architecture & Demonstration Notes
 
 * **Page Swapping (`js/script.js`):**  
-  The site uses a Single-Page Application pattern. All three views exist in `index.html` inside `<section class="page-section">` containers. In `css/styles.css`, `.page-section` is set to `display: none;` while `.page-section.active` is set to `display: block;`. When a nav link (or the power logo) is clicked, JavaScript reads the element's `data-page` attribute and toggles the `.active` class on both the matching section and the corresponding nav link.
-* **Hash Routing:**  
-  Each view swap calls `history.pushState`, updating the URL to `#home`, `#televisions`, or `#about`. A `popstate` listener re-renders the correct view on back/forward navigation, and the initial load reads `location.hash` — so a browser refresh returns the user to the view they were on.
+  The site uses a Single-Page Application pattern. All three views exist in `index.html` under `<section class="page-section">`. In `css/styles.css`, `.page-section` is set to `display: none;`, while `.page-section.active` is set to `display: block;`. When a nav link or the power logo is clicked, JavaScript reads the `data-page` attribute and toggles the `.active` class on both the matching content container and the corresponding navigation link.
 * **Logo Button:**  
-  The logo carries `data-page="home"` and shares the same click handler as the nav links, resetting the view to Home and scrolling to the top of the viewport.
+  The logo shares the same click handler as the nav links, resetting the view to the Home tab and scrolling to the top of the viewport.
 * **CSS Custom Properties:**  
-  All theme colours (`--bg`, `--surface`, `--accent`, `--accent-2`, etc.) are centralised in the `:root` pseudo-class in `css/styles.css`, so the entire palette can be re-themed from one location.
-* **Chart Placeholders:**  
-  Each of the seven analysis questions on the Televisions view has a `.chart-slot` container with a suggested visualisation type (pie/donut, bar, box plot, scatter). These slots are the integration points for D3.js charts built from the Energy Rating registration dataset in later tasks.
+  All theme colours are centralised inside the `:root` pseudo-class in `css/styles.css` for easy adjustments across components.
